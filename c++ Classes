@@ -1,0 +1,66 @@
+
+#include <iostream>
+using namespace std;
+
+class queue {
+
+    int q[100];
+    int sloc, rloc;
+
+    public:void init();
+    void qput(int i); 
+    int qget();
+
+};
+
+void queue::qput(int i) {
+
+    if (sloc == 100) {
+        cout << "Queue is full. \n"; return;
+    }
+
+    q[++sloc] = i;
+}
+
+int queue::qget() {
+
+    if (rloc == sloc) {
+        cout << "Queue is empty. \n"; return 0;
+    }
+    rloc++; 
+    return q[rloc];
+
+}
+
+void queue::init() {
+    rloc = sloc = 0;
+}
+
+
+int main()
+{
+    queue que1, que2;
+
+    que1.init();
+    que2.init();
+
+
+    que1.qput(10);
+    que2.qput(19);
+
+    que1.qput(20);
+    que2.qput(1);
+
+    cout << "Queue 1 contains: ";
+    cout << que1.qget() << " ";
+    cout << que1.qget() << "\n";
+
+    cout << "Queue 2 contains: ";
+    cout << que2.qget() << " ";
+    cout << que2.qget() << "\n";
+
+
+    
+    return 0;
+}
+
